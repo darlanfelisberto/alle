@@ -5,6 +5,10 @@ public enum LayoutPdf {
 
 	private int index;
 	
+	public int getIndex() {
+		return this.index;
+	}
+	
 	private LayoutPdf(int index) {
 		this.index = index;
 	}

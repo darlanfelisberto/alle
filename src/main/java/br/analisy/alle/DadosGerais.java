@@ -48,7 +48,11 @@ public class DadosGerais {
 			if(dp.getSumProblen() == 1) 
 				dp.getLayout().add(this.que, dp.getSumProblen()); 
 			else 
-				dp.getLayout().add(this.vQue, dp.getSumProblen());
+				if(dp.getLayout().equals(LayoutPdf.COLUNA_2) && dp.getSumProblen()<3)
+					dp.getLayout().add(this.que, dp.getSumProblen());
+//					dp.getLayout().add(this.vQue, dp.getSumProblen());
+				else
+					dp.getLayout().add(this.vQue, dp.getSumProblen());
 		
 			dp.getLayout().add(this.img, dp.getSumImg());
 			dp.getLayout().add(this.tab, dp.getSumTable());

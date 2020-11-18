@@ -22,13 +22,13 @@ public class main2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		try {
-//			main2.initProva(getListFilesByFolder(Paths.get("C:\\aletheia GT\\2019\\prova jpg e xml\\AGRONOMIA")));
-//			System.exit(0);
-//		} catch (IOException e2) {
-//			// TODO Auto-generated catch block
-//			e2.printStackTrace();
-//		}
+		try {
+			main2.initProva(getListFilesByFolder(Paths.get("C:\\aletheia GT\\2019\\prova jpg e xml\\AGRONOMIA")));
+			System.exit(0);
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 //		
 		List<Path> anos = null;
 		try {
