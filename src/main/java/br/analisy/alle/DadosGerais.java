@@ -9,6 +9,11 @@ public class DadosGerais {
 	
 	private StringBuffer naoQ = new StringBuffer();
 	private int textoSolto = 0;
+	private StringBuffer texto = new StringBuffer();
+	
+	public StringBuffer getText() {
+		return this.texto;
+	}
 	
 	public int[] getQue() {
 		return que;
@@ -44,13 +49,14 @@ public class DadosGerais {
 	public void sinc(DadosPagina dp) throws Exception {
 		this.naoQ.append(dp.getNaoQ());
 		this.textoSolto += dp.getTextoSolto();
+		this.texto.append(dp.getText());
+		
 		if(dp.temProblen()) {
 			if(dp.getSumProblen() == 1) 
 				dp.getLayout().add(this.que, dp.getSumProblen()); 
 			else 
 				if(dp.getLayout().equals(LayoutPdf.COLUNA_2) && dp.getSumProblen()<3)
 					dp.getLayout().add(this.que, dp.getSumProblen());
-//					dp.getLayout().add(this.vQue, dp.getSumProblen());
 				else
 					dp.getLayout().add(this.vQue, dp.getSumProblen());
 		
@@ -73,18 +79,33 @@ public class DadosGerais {
 		}
 	}
 	
-	public void print() {
-		System.out.printf("\n       c1    c2    mc\n");
-		System.out.printf("1Q  %5d %5d %5d\n",		que[1],que[2],que[0]);
-		System.out.printf("1QV %5d %5d %5d\n",		vQPP[1],vQPP[2],vQPP[0]);
-		System.out.printf("VQP %5d %5d %5d\n",		vQue[1],vQue[2],vQue[0]);
-		System.out.printf("img %5d %5d %5d\n",		img[1],img[2],img[0]);
-		System.out.printf("tab %5d %5d %5d\n",	tab[1],tab[2],tab[0]);
-		System.out.println("Total questoes: "+(que[1]+que[2]+que[0]+vQue[1]+vQue[2]+vQue[0]+vQPP[1]+vQPP[2]+vQPP[0]));
-		System.out.println("total texto solto: "+this.textoSolto);
-		System.out.println(this.naoQ.toString());
-		System.out.printf("------------------------------------\n\n");
+//	public void print() {
+//		System.out.printf("\n       c1    c2    mc\n");
+//		System.out.printf("1Q  %5d %5d %5d\n",		que[1],que[2],que[0]);
+//		System.out.printf("1QV %5d %5d %5d\n",		vQPP[1],vQPP[2],vQPP[0]);
+//		System.out.printf("VQP %5d %5d %5d\n",		vQue[1],vQue[2],vQue[0]);
+//		System.out.printf("img %5d %5d %5d\n",		img[1],img[2],img[0]);
+//		System.out.printf("tab %5d %5d %5d\n",	tab[1],tab[2],tab[0]);
+//		System.out.println("Total questoes: "+(que[1]+que[2]+que[0]+vQue[1]+vQue[2]+vQue[0]+vQPP[1]+vQPP[2]+vQPP[0]));
+//		System.out.println("total texto solto: "+this.textoSolto);
+//		System.out.println(this.naoQ.toString());
+//		System.out.printf("------------------------------------\n\n");
+//	}
+	
+	public String printToString() {
+		StringBuffer s = new StringBuffer();
+		s.append(String.format("\n       c1    c2    mc\n"));
+		s.append(String.format("1Q  %5d %5d %5d\n",		que[1],que[2],que[0]));
+		s.append(String.format("1QV %5d %5d %5d\n",		vQPP[1],vQPP[2],vQPP[0]));
+		s.append(String.format("VQP %5d %5d %5d\n",		vQue[1],vQue[2],vQue[0]));
+		s.append(String.format("img %5d %5d %5d\n",		img[1],img[2],img[0]));
+		s.append(String.format("tab %5d %5d %5d\n",	tab[1],tab[2],tab[0]));
+		s.append("Total questoes: "+(que[1]+que[2]+que[0]+vQue[1]+vQue[2]+vQue[0]+vQPP[1]+vQPP[2]+vQPP[0]));
+		s.append("\ntotal texto solto: "+this.textoSolto+"\n");
+		s.append(this.naoQ.toString());
+		s.append("\n------------------------------------\n\n");
+		
+		return s.toString();
 	}
-	
-	
+		
 }
