@@ -65,14 +65,14 @@ public class AnalisyXML {
 
 				try {
 					this.analisy(pc.getPage());
-					
-					this.printStringToFile(folder.toString());
-					this.printStringToFile(this.dg.printToString());
+
 				} catch (Exception e) {
 					System.out.println(pc.getPage().getImageFilename());
 					e.printStackTrace();
 				}		
 			}
+			this.printStringToFile(folder.toString());
+			this.printStringToFile(this.dg.printToString());
 			this.saveQuestoes(folder);
 		} catch (JAXBException e) {
 			e.printStackTrace();
